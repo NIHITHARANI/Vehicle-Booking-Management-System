@@ -167,22 +167,26 @@ private void customerLogin(Customer customer) {
                     System.out.println("Enter a valid vehicle ID.");
                     break;
                 }
-                System.out.println("The vehicle you have selected is\n");
-                vehicle.display();
-                System.out.println("Enter the duration for which you need the vehicle: ");
-                int duration=sc.nextInt();
-                System.out.println("Your amount for the booking would be: "+(duration*vehicle.getPrice())+"\nWould you like to continue booking(yes/no): ");
-                sc.nextLine();
-                String confirmation=sc.nextLine();
-                if(confirmation.equalsIgnoreCase("no")){
-                    System.out.println("Canceling Booking....");
+                System.out.println("Enter start (yyyy-MM-ddTHH:mm): ");
+                LocalDateTime start = LocalDateTime.parse(sc.nextLine());
+                System.out.println("Enter end (yyyy-MM-ddTHH:mm): ");
+                LocalDateTime end = LocalDateTime.parse(sc.nextLine());
+                bookId++;
+                if(bookingService.addBooking(customer,vehicle,start,end,bookId)){
+                    double amount=bookingService.getAmount("BID"+bookId);
+                    System.out.println("Booking amount: "+amount);
+                    System.out.println("Are you sure you want to make the booking(yes/no):");
+                    String confirmation=sc.nextLine();
+                    if(confirmation.equalsIgnoreCase("yes")){
+                        System.out.println("Payment successful");
+                        PaymentService.addPayment(("PID"+payId++),("BID"+bookId),bookingService.getAmount("BID"+bookId));
+                        System.out.println("Booking completed successfully.\n");
+                        break;
+                    }
+                    System.out.println("Payment cancelled");
                     break;
                 }
-                Payment payment=new Payment("PID"+(payId++),"BID"+(bookId++),(duration*vehicle.getPrice()));
-                Booking booking=new Booking(payment.getBid(),customer,duration);
-                customer.addBooking(booking);
-                vehicle.setStatus(true);
-                System.out.println("Booking completed successfully.\n");
+                System.out.println("Booking Cant be made.");
                 break;
             }
             case 5:{
@@ -200,8 +204,6 @@ private void customerLogin(Customer customer) {
                     break;
                 }
                 bookingService.cancelBooking(booking);
-                customer.removeBooking(booking);
-                booking.getVehicle().setStatus(false);
                 System.out.println("Booking is cancelled successfully...");
                 break;
             }

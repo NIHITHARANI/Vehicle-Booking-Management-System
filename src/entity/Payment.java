@@ -5,9 +5,9 @@ import java.awt.print.Book;
 public class Payment {
     private String Pid;
     private String book;
-    private int amount;
+    private double amount;
 
-    public Payment(String pid, String  bid, int amount) {
+    public Payment(String pid, String  bid, double amount) {
         Pid = pid;
         book = bid;
         this.amount = amount;
@@ -29,15 +29,15 @@ public class Payment {
         book = bid;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
     public void display(){
-        System.out.println("Payment ID: "+Pid+"Amount: "+amount+"Booking ID: "+ book);
+        System.out.println("Payment ID: "+Pid+"\nAmount: "+amount+"\nBooking ID: "+ book);
     }
 }

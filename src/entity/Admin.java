@@ -10,9 +10,6 @@ public class Admin {
     private String name;
     private String password;
     private String phone;
-    private List<Customer> customers=new ArrayList<>();
-    private List<Booking> bookings=new ArrayList<>();
-    private List<Vehicle> vehicles=new ArrayList<>();
 
     public Admin(String Aid,String name, String password, String phone) {
         this.Aid=Aid;
@@ -54,6 +51,6 @@ public class Admin {
     }
 
     public void display() {
-        System.out.println("Admin ID: "+Aid+"Name: "+name+"Phone: "+phone);
+        System.out.println("Admin ID: "+Aid+"\nName: "+name+"\nPhone: "+phone);
     }
 }

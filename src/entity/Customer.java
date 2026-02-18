@@ -8,7 +8,6 @@ public class Customer {
     private String name;
     private String password;
     private String phone;
-    private List<Booking> bookings=new ArrayList<>();
 
     public Customer(String cid, String name, String password, String phone) {
         Cid = cid;
@@ -49,21 +48,9 @@ public class Customer {
         this.name = name;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-
-
     public void display() {
-        System.out.println("ID: "+Cid+"Name: "+name+"Phone: "+phone);
+        System.out.println("ID: "+Cid+"\nName: "+name+"\nPhone: "+phone);
     }
 
-    public void addBooking(Booking booking) {
-        bookings.add(booking);
-    }
 
-    public void removeBooking(Booking booking) {
-        bookings.remove(booking);
-    }
 }

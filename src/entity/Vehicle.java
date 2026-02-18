@@ -10,8 +10,6 @@ public class Vehicle {
     private String no;
     private String type;
     private int price;
-    private boolean status=false;
-    private List<Booking> bookings=new ArrayList<>();
 
     public Vehicle(String vid, String no, String type, String fuel, String mileage,int price) {
         Vid = vid;
@@ -70,15 +68,7 @@ public class Vehicle {
         this.type = type;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public void display() {
-        System.out.println("Vehicle ID: "+Vid+"Type: "+type+"Fuel Type: "+fuel+"Plate No: "+no+"Mileage: "+mileage+"Price: "+price);
+        System.out.println("Vehicle ID: "+Vid+"\nType: "+type+"\nFuel Type: "+fuel+"\nPlate No: "+no+"\nMileage: "+mileage+"\nPrice: "+price);
     }
 }

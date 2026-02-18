@@ -3,18 +3,23 @@ package entity;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Booking {
     private String Bid;
-    private int duration;
+    private LocalDateTime start;
+    private LocalDateTime end;
     private Customer customer;
     private Payment payment;
     private Vehicle vehicle;
+    private double amount;
 
-    public Booking(String bid, Customer customer,int duration) {
+    public Booking(String bid, Customer customer, LocalDateTime start,LocalDateTime end,double amount) {
         Bid = bid;
         this.customer = customer;
-        this.duration=duration;
+        this.start=start;
+        this.end=end;
+        this.amount=amount;
     }
 
     public String getBid() {
@@ -25,12 +30,28 @@ public class Booking {
         Bid = bid;
     }
 
-    public int getDuration() {
-        return duration;
+    public LocalDateTime getStart() {
+        return start;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
+    }
+
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public Customer getCustomer() {
@@ -58,6 +79,6 @@ public class Booking {
     }
 
     public void display(){
-        System.out.println("Booking ID: "+Bid+"Customer ID :"+customer.getCid()+"Duration: "+duration);
+        System.out.println("Booking ID: "+Bid+"\nCustomer ID :"+customer.getCid()+"\nStart Time: "+start+"\nEnd Time: "+end);
     }
 }
