@@ -10,7 +10,7 @@ public class Customer {
     private String phone;
     private List<Booking> bookings=new ArrayList<>();
 
-    public Customer(String cid, String phone, String password, String name) {
+    public Customer(String cid, String name, String password, String phone) {
         Cid = cid;
         this.phone = phone;
         this.password = password;
@@ -47,5 +47,23 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+
+
+    public void display() {
+        System.out.println("ID: "+Cid+"Name: "+name+"Phone: "+phone);
+    }
+
+    public void addBooking(Booking booking) {
+        bookings.add(booking);
+    }
+
+    public void removeBooking(Booking booking) {
+        bookings.remove(booking);
     }
 }

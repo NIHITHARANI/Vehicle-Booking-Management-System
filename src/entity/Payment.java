@@ -4,10 +4,10 @@ import java.awt.print.Book;
 
 public class Payment {
     private String Pid;
-    private Booking book;
-    private String amount;
+    private String book;
+    private int amount;
 
-    public Payment(String pid, Booking bid, String amount) {
+    public Payment(String pid, String  bid, int amount) {
         Pid = pid;
         book = bid;
         this.amount = amount;
@@ -21,23 +21,23 @@ public class Payment {
         Pid = pid;
     }
 
-    public Booking getBid() {
+    public String getBid() {
         return book;
     }
 
-    public void setBid(Booking bid) {
+    public void setBid(String bid) {
         book = bid;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
     public void display(){
-        System.out.println("Payment ID: "+Pid+"Amount: "+amount+"Booking ID: "+ book.getBid());
+        System.out.println("Payment ID: "+Pid+"Amount: "+amount+"Booking ID: "+ book);
     }
 }

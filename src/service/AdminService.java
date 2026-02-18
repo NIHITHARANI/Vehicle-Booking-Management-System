@@ -8,9 +8,8 @@ import java.util.List;
 public class AdminService {
     private List<Admin> admins=new ArrayList<>();
 
-    public void  addAdmin(String name,String password,String phone){
-        admins.add(new Admin(name,password,phone));
-        System.out.println("Admin Added Successfully");
+    public void  addAdmin(String Aid,String name,String password,String phone){
+        admins.add(new Admin(Aid,name,password,phone));
     }
 
     public void vieweAdmin(){
@@ -23,4 +22,11 @@ public class AdminService {
         System.out.println("Admins displayed successfully");
     }
 
+    public Admin findAdminByID(String id) {
+        for(Admin admin:admins){
+            if(admin.getAid().equals(id))
+                return admin;
+        }
+        return null;
+    }
 }

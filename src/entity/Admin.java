@@ -14,7 +14,8 @@ public class Admin {
     private List<Booking> bookings=new ArrayList<>();
     private List<Vehicle> vehicles=new ArrayList<>();
 
-    public Admin(String name, String password, String phone) {
+    public Admin(String Aid,String name, String password, String phone) {
+        this.Aid=Aid;
         this.name = name;
         this.password = password;
         this.phone = phone;
